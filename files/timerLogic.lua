@@ -21,8 +21,9 @@ function _OnFrame()
         _readWindow = ReadLong(0xBEBE10 - 0x56454E)
         _readButtons = ReadByte(0xBEBE08 - 0x56454E)
         _readTitle = ReadByte(0x711438 - 0x56454E)
+        _readMap = ReadByte(0x0453B82)
 
-        if _readTitle == 0x00 then
+        if _readTitle == 0x00 and _readMap == 0x01 then
             _started = true
             _startTime = os.time()
         else
