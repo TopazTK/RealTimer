@@ -5,6 +5,8 @@ LUAGUI_DESC = "Adds a timer, independent of the game timer."
 _startTime = 0
 
 _startSteps = 0
+
+_finished = false
 _started = false
 
 function getDigit(num, digit)
@@ -46,19 +48,25 @@ function _OnFrame()
             end
         end 
     else
-        _localTime = os.difftime(os.time(), _startTime)
+        _readXemmy = ReadByte(0x2A0D3E0 - 0x56454E)
 
-        _localSeconds = _localTime % 60
-        _localMinutes = (_localTime / 60) % 60
-        _localHours = _localTime / 3600
+        if _readXemmy ~= 0x04 and _finished == false then
+            _localTime = os.difftime(os.time(), _startTime)
 
-        WriteByte(0x49FA16, 175 + getDigit(_localHours, 2))
-        WriteByte(0x49FA16 + 0x14, 175 + getDigit(_localHours, 1))
+            _localSeconds = _localTime % 60
+            _localMinutes = (_localTime / 60) % 60
+            _localHours = _localTime / 3600
 
-        WriteByte(0x49FA16 + 0x14 * 2, 175 + getDigit(_localMinutes, 2))
-        WriteByte(0x49FA16 + 0x14 * 3, 175 + getDigit(_localMinutes, 1))
+            WriteByte(0x49FA16, 175 + getDigit(_localHours, 2))
+            WriteByte(0x49FA16 + 0x14, 175 + getDigit(_localHours, 1))
 
-        WriteByte(0x49FA16 + 0x14 * 4, 175 + getDigit(_localSeconds, 2))
-        WriteByte(0x49FA16 + 0x14 * 5, 175 + getDigit(_localSeconds, 1))
+            WriteByte(0x49FA16 + 0x14 * 2, 175 + getDigit(_localMinutes, 2))
+            WriteByte(0x49FA16 + 0x14 * 3, 175 + getDigit(_localMinutes, 1))
+
+            WriteByte(0x49FA16 + 0x14 * 4, 175 + getDigit(_localSeconds, 2))
+            WriteByte(0x49FA16 + 0x14 * 5, 175 + getDigit(_localSeconds, 1))
+        else if _readXemmy == 0x04 then 
+            _finished = true
+        end
     end
 end
