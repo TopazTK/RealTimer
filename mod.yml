@@ -144,7 +144,7 @@ assets:
   source:
   - name: assets/commonField.png
 
-- name: scripts/timerLogic.lua
+- name: files/timerLogic.lua
   method: copy
   source:
   - name: scripts/timerLogic.lua
