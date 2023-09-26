@@ -65,7 +65,7 @@ function _OnFrame()
 
             WriteByte(0x49FA16 + 0x14 * 4, 175 + getDigit(_localSeconds, 2))
             WriteByte(0x49FA16 + 0x14 * 5, 175 + getDigit(_localSeconds, 1))
-        else if _readXemmy == 0x04 then 
+        elseif _readXemmy == 0x04 then 
             _finished = true
         end
     end
