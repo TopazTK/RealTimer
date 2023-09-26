@@ -19,8 +19,8 @@ end
 function _OnFrame()
     if _started == false then
         _readWindow = ReadLong(0xBEBE10 - 0x56454E)
-        _readButtons = ReadByte(0xBEBE08)
-        _readTitle = ReadByte(0x711438)
+        _readButtons = ReadByte(0xBEBE08 - 0x56454E)
+        _readTitle = ReadByte(0x711438 - 0x56454E)
 
         if _readTitle == 0x00 then
             _started = true
