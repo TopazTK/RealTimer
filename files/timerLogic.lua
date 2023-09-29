@@ -48,25 +48,19 @@ function _OnFrame()
             end
         end 
     else
-        _readXemmy = ReadByte(0x2A0D3E0 - 0x56454E)
+        _localTime = os.difftime(os.time(), _startTime)
 
-        if _readXemmy ~= 0x04 and _finished == false then
-            _localTime = os.difftime(os.time(), _startTime)
+        _localSeconds = _localTime % 60
+        _localMinutes = (_localTime / 60) % 60
+        _localHours = _localTime / 3600
 
-            _localSeconds = _localTime % 60
-            _localMinutes = (_localTime / 60) % 60
-            _localHours = _localTime / 3600
+        WriteByte(0x49FA16, 175 + getDigit(_localHours, 2))
+        WriteByte(0x49FA16 + 0x14, 175 + getDigit(_localHours, 1))
 
-            WriteByte(0x49FA16, 175 + getDigit(_localHours, 2))
-            WriteByte(0x49FA16 + 0x14, 175 + getDigit(_localHours, 1))
+        WriteByte(0x49FA16 + 0x14 * 2, 175 + getDigit(_localMinutes, 2))
+        WriteByte(0x49FA16 + 0x14 * 3, 175 + getDigit(_localMinutes, 1))
 
-            WriteByte(0x49FA16 + 0x14 * 2, 175 + getDigit(_localMinutes, 2))
-            WriteByte(0x49FA16 + 0x14 * 3, 175 + getDigit(_localMinutes, 1))
-
-            WriteByte(0x49FA16 + 0x14 * 4, 175 + getDigit(_localSeconds, 2))
-            WriteByte(0x49FA16 + 0x14 * 5, 175 + getDigit(_localSeconds, 1))
-        elseif _readXemmy == 0x04 then 
-            _finished = true
-        end
+        WriteByte(0x49FA16 + 0x14 * 4, 175 + getDigit(_localSeconds, 2))
+        WriteByte(0x49FA16 + 0x14 * 5, 175 + getDigit(_localSeconds, 1))
     end
 end
