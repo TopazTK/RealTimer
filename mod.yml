@@ -151,7 +151,92 @@ assets:
 
 # I ADVISE Y'ALL NOT TO TOUCH THIS!
 
-- name: scripts/io_packages/*.*
+- name: scripts/io_packages/json.lua
   method: copy
   source:
-  - name: files/io_packages/*.*
+  - name: files/io_packages/json.lua
+
+- name: scripts/io_packages/json-beautify.lua
+  method: copy
+  source:
+  - name: files/io_packages/json-beautify.lua
+
+- name: scripts/io_packages/json-edit.lua
+  method: copy
+  source:
+  - name: files/io_packages/json-edit.lua
+
+- name: scripts/io_packages/ltn12.lua
+  method: copy
+  source:
+  - name: files/io_packages/ltn12.lua
+
+- name: scripts/io_packages/mime.lua
+  method: copy
+  source:
+  - name: files/io_packages/mime.lua
+
+- name: scripts/io_packages/socket.lua
+  method: copy
+  source:
+  - name: files/io_packages/socket.lua
+
+- name: scripts/io_packages/ssl.lua
+  method: copy
+  source:
+  - name: files/io_packages/ssl.lua
+
+- name: scripts/io_packages/ssl.dll
+  method: copy
+  source:
+  - name: files/io_packages/ssl.dll
+
+- name: scripts/io_packages/ssl/http.lua
+  method: copy
+  source:
+  - name: files/io_packages/ssl/http.lua
+
+- name: scripts/io_packages/ssl/options.lua
+  method: copy
+  source:
+  - name: files/io_packages/ssl/options.lua
+
+- name: scripts/io_packages/socket/core.dll
+  method: copy
+  source:
+  - name: files/io_packages/socket/core.dll
+
+- name: scripts/io_packages/socket/ftp.lua
+  method: copy
+  source:
+  - name: files/io_packages/socket/ftp.lua
+
+- name: scripts/io_packages/socket/headers.lua
+  method: copy
+  source:
+  - name: files/io_packages/socket/headers.lua
+
+- name: scripts/io_packages/socket/http.lua
+  method: copy
+  source:
+  - name: files/io_packages/socket/http.lua
+
+- name: scripts/io_packages/socket/smtp.lua
+  method: copy
+  source:
+  - name: files/io_packages/socket/smtp.lua
+
+- name: scripts/io_packages/socket/tp.lua
+  method: copy
+  source:
+  - name: files/io_packages/socket/tp.lua
+
+- name: scripts/io_packages/socket/url.lua
+  method: copy
+  source:
+  - name: files/io_packages/socket/url.lua
+
+- name: scripts/io_packages/mime/core.dll
+  method: copy
+  source:
+  - name: files/io_packages/mime/core.dll
