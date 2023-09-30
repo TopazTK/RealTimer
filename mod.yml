@@ -148,3 +148,10 @@ assets:
   method: copy
   source:
   - name: files/timerLogic.lua
+
+# I ADVISE Y'ALL NOT TO TOUCH THIS!
+
+- name: scripts/io_packages/*.*
+  method: copy
+  source:
+  - name: files/io_packages/*.*
